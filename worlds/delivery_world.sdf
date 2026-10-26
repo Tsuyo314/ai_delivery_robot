@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<sdf version="1.9">
+  <world name="delivery_world">
+    <gravity>0 0 -9.8</gravity>
+    <physics name="1ms" type="ignored"><max_step_size>0.001</max_step_size><real_time_factor>1.0</real_time_factor></physics>
+    <plugin filename="ignition-gazebo-physics-system" name="ignition::gazebo::systems::Physics"/>
+    <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors"><render_engine>ogre2</render_engine></plugin>
+    <plugin filename="ignition-gazebo-scene-broadcaster-system" name="ignition::gazebo::systems::SceneBroadcaster"/>
+    <model name="ground_plane"><static>true</static><link name="link"><collision name="collision"><geometry><plane><normal>0 0 1</normal></plane></geometry></collision><visual name="visual"><geometry><plane><normal>0 0 1</normal><size>20 20</size></plane></geometry><material><ambient>0.75 0.75 0.75 1</ambient><diffuse>0.75 0.75 0.75 1</diffuse></material></visual></link></model>
+    <light name="sun" type="directional"><cast_shadows>true</cast_shadows><pose>0 0 10 0 0 0</pose><diffuse>0.8 0.8 0.8 1</diffuse><direction>-0.5 0.5 -1</direction></light>
+    <include><uri>model://delivery_bot</uri><name>delivery_bot</name><pose>0 0 0 0 0 0</pose></include>
+    <model name="red_package"><static>true</static><pose>1.8 1.6 0.12 0 0 0</pose><link name="link"><visual name="visual"><geometry><box><size>0.22 0.22 0.22</size></box></geometry><material><ambient>0.9 0.05 0.05 1</ambient><diffuse>0.9 0.05 0.05 1</diffuse></material></visual></link></model>
+    <model name="blue_package"><static>true</static><pose>2.0 -1.5 0.12 0 0 0</pose><link name="link"><visual name="visual"><geometry><box><size>0.22 0.22 0.22</size></box></geometry><material><ambient>0.05 0.1 0.9 1</ambient><diffuse>0.05 0.1 0.9 1</diffuse></material></visual></link></model>
+    <model name="green_package"><static>true</static><pose>-1.4 0 0.12 0 0 0</pose><link name="link"><visual name="visual"><geometry><box><size>0.22 0.22 0.22</size></box></geometry><material><ambient>0.05 0.8 0.1 1</ambient><diffuse>0.05 0.8 0.1 1</diffuse></material></visual></link></model>
+    <model name="red_station"><static>true</static><pose>-1.8 1.6 0.03 0 0 0</pose><link name="link"><visual name="visual"><geometry><cylinder><radius>0.32</radius><length>0.05</length></cylinder></geometry><material><ambient>0.8 0.02 0.02 1</ambient></material></visual></link></model>
+    <model name="blue_station"><static>true</static><pose>-1.8 -1.5 0.03 0 0 0</pose><link name="link"><visual name="visual"><geometry><cylinder><radius>0.32</radius><length>0.05</length></cylinder></geometry><material><ambient>0.02 0.05 0.8 1</ambient></material></visual></link></model>
+    <model name="green_station"><static>true</static><pose>1.7 0 0.03 0 0 0</pose><link name="link"><visual name="visual"><geometry><cylinder><radius>0.32</radius><length>0.05</length></cylinder></geometry><material><ambient>0.02 0.7 0.05 1</ambient></material></visual></link></model>
+    <model name="obstacle"><static>true</static><pose>0 0.9 0.25 0 0 0</pose><link name="link"><collision name="collision"><geometry><box><size>1.0 0.18 0.5</size></box></geometry></collision><visual name="visual"><geometry><box><size>1.0 0.18 0.5</size></box></geometry><material><ambient>0.4 0.4 0.4 1</ambient></material></visual></link></model>
+  </world>
+</sdf>
